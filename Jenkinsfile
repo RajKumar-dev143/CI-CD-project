@@ -1,7 +1,7 @@
 node{
      
     stage('SCM Checkout'){
-        git url: 'https://github.com/rajkumar-ui/Docker-Web-App.git',branch: 'master'
+        git url: 'https://github.com/rajkumar-ui/CI-CD-project.git',branch: 'master'
     }
     
     stage(" Maven Clean Package"){
@@ -25,7 +25,7 @@ node{
      
       stage('Run Docker Image In Dev Server'){
         
-        def dockerRun = ' docker run  -d -p 8080:8080 --name java-web-app nani903020/buildcijenkinsapp'
+        def dockerRun = ' docker run  -d -p 8080:8080 --name buildcijenkinsapp nani903020/buildcijenkinsapp'
          
          sshagent(['DOCKER_SERVER']) {
           sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.86.162 docker stop buildcijenkinsapp || true'
